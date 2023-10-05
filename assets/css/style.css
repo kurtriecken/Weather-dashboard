@@ -2,12 +2,20 @@
     margin-bottom: 10px;
 }
 
+#header {
+    background-image: linear-gradient(to right, darkblue, white);
+}
+
 #cloud_div {
     background-image: url(../pictures/rain_cloud.png);
     background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #sun_div {
     background-image: url(../pictures/sun_happy.jpg);
     background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
