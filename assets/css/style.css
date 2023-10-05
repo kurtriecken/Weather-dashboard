@@ -1,0 +1,13 @@
+* {
+    margin-bottom: 10px;
+}
+
+#cloud_div {
+    background-image: url(../pictures/rain_cloud.png);
+    background-size: contain;
+}
+
+#sun_div {
+    background-image: url(../pictures/sun_happy.jpg);
+    background-size: contain;
+}
