@@ -2,6 +2,10 @@
     margin-bottom: 10px;
 }
 
+body {
+    background-color: skyblue;
+}
+
 #header {
     background-image: linear-gradient(to right, darkblue, white);
 }
@@ -18,4 +22,8 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+input {
+    margin: auto;
 }

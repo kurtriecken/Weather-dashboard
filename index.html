@@ -39,7 +39,7 @@
                 <p id="today_date">10/5/23</p>
             </div>
             <div class="col-sm-12 col-md-3">
-                <h2>Temperature: 80<sup>o</sup>
+                <h2>Temperature: 80<sup>o</sup>&nbspF
                 </h2>
             </div>
             <div class="col-sm-12 col-md-3">
@@ -47,12 +47,89 @@
                 <p>Wind Speed: 7mph</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12"></div>
-            <div class="col-sm-12"></div>
-            <div class="col-sm-12"></div>
-            <div class="col-sm-12"></div>
-            <div class="col-sm-12"></div>
+
+        <!-- Five-day forecast row -->
+        <div class="row justify-content-evenly">
+            <div class="col-sm-12 col-md-2" id="day_1">
+                <h3>Tomorrow</h3>
+                <div class="row">
+                    <p class="w-50">80<sup>o</sup>&nbspF</p>
+                    <p class="w-50">🌞</p>
+                </div>
+                <div class="row">
+                    <p>Humidity: 70%</p>
+                    <p>Wind Speed: 7mph</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-2" id="day_2">
+                <h3>Tomorrow</h3>
+                <div class="row">
+                    <p class="w-50">80<sup>o</sup>&nbspF</p>
+                    <p class="w-50">🌞</p>
+                </div>
+                <div class="row">
+                    <p>Humidity: 70%</p>
+                    <p>Wind Speed: 7mph</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-2" id="day_3">
+                <h3>Tomorrow</h3>
+                <div class="row">
+                    <p class="w-50">80<sup>o</sup>&nbspF</p>
+                    <p class="w-50">🌞</p>
+                </div>
+                <div class="row">
+                    <p>Humidity: 70%</p>
+                    <p>Wind Speed: 7mph</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-2" id="day_4">
+                <h3>Tomorrow</h3>
+                <div class="row">
+                    <p class="w-50">80<sup>o</sup>&nbspF</p>
+                    <p class="w-50">🌞</p>
+                </div>
+                <div class="row">
+                    <p>Humidity: 70%</p>
+                    <p>Wind Speed: 7mph</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-2" id="day_5">
+                <h3>Tomorrow</h3>
+                <div class="row">
+                    <p class="w-50">80<sup>o</sup>&nbspF</p>
+                    <p class="w-50">🌞</p>
+                </div>
+                <div class="row">
+                    <p>Humidity: 70%</p>
+                    <p>Wind Speed: 7mph</p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-evenly">
+            <div class="col-sm-12 col-md-4 text-center">
+                <div class="card">
+                    <h5 class="card-title">Find your City!</h5>
+                    <form>
+                        <input type="city" class="form-control w-75" aria-describedby="city_search">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" 
+                        type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" 
+                        aria-expanded="false">
+                        Your cities list
+                    </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                </div>
+            </div>
         </div>
     </div>
     <div></div>
