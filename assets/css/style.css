@@ -3,7 +3,9 @@
 }
 
 body {
-    background-color: skyblue;
+    /* background-color: skyblue; */
+    background-image: url(../pictures/clear_sky.jpg);
+    background-size: cover;
 }
 
 #header {
@@ -26,4 +28,14 @@ body {
 
 input {
     margin: auto;
+}
+
+.card {
+    /* background-color: #3C7FCE; */
+    /* border-color: #319bd8; */
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
 }

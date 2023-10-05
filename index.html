@@ -13,10 +13,10 @@
     <!-- My style sheet -->
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-<body>
+<body class="h-100">
     
     <!-- Header and welcome message -->
-    <div class="container-fluid" id="header">
+    <div class="container-fluid border-bottom border-secondary border-5" id="header">
         <div class="row flex-nowrap justify-content-around">
             <div class="col-sm-3 w-15 flex-shrink-1" id="cloud_div">
                 <!-- <img src="./assets/pictures/rain_cloud.png" class="img-fluid" alt="rain cloud"> -->
@@ -54,7 +54,7 @@
 
         <!-- Five-day forecast row -->
         <div class="row justify-content-evenly">
-            <div class="col-sm-12 col-md-2" id="day_1">
+            <div class="col-sm-12 col-md-2 five-day" id="day_1">
                 <h3>Tomorrow</h3>
                 <div class="row">
                     <p class="w-50">80<sup>o</sup>&nbspF</p>
@@ -65,7 +65,7 @@
                     <p>Wind Speed: 7mph</p>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-2" id="day_2">
+            <div class="col-sm-12 col-md-2 five-day" id="day_2">
                 <h3>Tomorrow</h3>
                 <div class="row">
                     <p class="w-50">80<sup>o</sup>&nbspF</p>
@@ -76,7 +76,7 @@
                     <p>Wind Speed: 7mph</p>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-2" id="day_3">
+            <div class="col-sm-12 col-md-2 five-day" id="day_3">
                 <h3>Tomorrow</h3>
                 <div class="row">
                     <p class="w-50">80<sup>o</sup>&nbspF</p>
@@ -87,7 +87,7 @@
                     <p>Wind Speed: 7mph</p>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-2" id="day_4">
+            <div class="col-sm-12 col-md-2 five-day" id="day_4">
                 <h3>Tomorrow</h3>
                 <div class="row">
                     <p class="w-50">80<sup>o</sup>&nbspF</p>
@@ -98,7 +98,7 @@
                     <p>Wind Speed: 7mph</p>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-2" id="day_5">
+            <div class="col-sm-12 col-md-2 five-day" id="day_5">
                 <h3>Tomorrow</h3>
                 <div class="row">
                     <p class="w-50">80<sup>o</sup>&nbspF</p>
@@ -114,7 +114,7 @@
         <!-- City search and dropdown of previously seen cities -->
         <div class="row justify-content-evenly">
             <div class="col-sm-12 col-md-4 text-center">
-                <div class="card">
+                <div class="card bg-transparent border-0">
                     <h5 class="card-title">Find your City!</h5>
                     <form>
                         <input type="city" class="form-control w-75" aria-describedby="city_search">
@@ -123,8 +123,8 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-4">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" 
+                <div class="dropdown bg-transparent">
+                    <button class="btn btn-secondary dropdown-toggle bg-transparent border-0" 
                         type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" 
                         aria-expanded="false">
                         Your cities list
@@ -138,8 +138,16 @@
             </div>
         </div>
     </div>
-    <div></div>
-    <div></div>
+
+    <!-- Footer with social links -->
+    <div class="container" id="Footer">
+        <div class="row text-center">
+            <div class="col-sm-12 col-md-3">KR</div>
+            <div class="col-sm-12 col-md-3">Github</div>
+            <div class="col-sm-12 col-md-3">Phone</div>
+            <div class="col-sm-12 col-md-3">Email</div>
+        </div>
+    </div>
 
 
 
