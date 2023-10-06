@@ -26,9 +26,15 @@ $(function () {
         })
         .then(function (data) {
             for(let i=7, j=1; i<data.list.length; i+=8, j++) {
-                let newDateInMS = data.list[i].dt * 1000;
-                console.log(dayjs(newDateInMS).format('MMM DD, YYYY @ hh:mma'));
-                $(`#day_${j}`).children('div').children("p.temp").html(data.list[i].main.temp);
+                let headEle = $(`#day_${j}`);
+                
+                if (j != 1) {
+                    let newDateInMS = data.list[i].dt * 1000;
+                    headEle.find("h3").html(dayjs(newDateInMS).format('dddd'));
+                }
+
+                // console.log(dayjs(newDateInMS).format('MMM DD, YYYY @ hh:mma'));
+                headEle.children('div').children("p.temp").html(data.list[i].main.temp);
             }
         })
 
