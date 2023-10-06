@@ -38,21 +38,21 @@
     <div class="container">
 
         <!-- Today's weather -->
-        <div class="row">
+        <div class="row" id="today_weather">
             <div class="col-sm-12 col-md-4 text-center">
-                <h2 id="city_name">Charlotte</h2>
+                <h2 id="city_name"></h2>
             </div>
             <div class="col-sm-12 col-md-2">
-                <p id="today_image">🌞</p>
-                <p id="today_date">10/5/23</p>
+                <p id="today_image"></p>
+                <p id="today_date"></p>
             </div>
             <div class="col-sm-12 col-md-3">
-                <h2>Temperature: 80<sup>o</sup>&nbspF
+                <h2 id="today_temp">
                 </h2>
             </div>
             <div class="col-sm-12 col-md-3">
-                <p>Humidity: 70%</p>
-                <p>Wind Speed: 7mph</p>
+                <p id="today_hum"></p>
+                <p id="today_wnd_spd"></p>
             </div>
         </div>
 
@@ -163,5 +163,6 @@
     crossorigin="anonymous"></script>
     <!-- JQuery CDN via Google APIs -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
