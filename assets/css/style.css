@@ -12,7 +12,7 @@ body {
 }
 
 #header {
-    background-image: linear-gradient(to right, darkblue, white);
+    background-image: linear-gradient(to right, #2060C1, #FFDE3B);
 }
 
 #cloud_div {
