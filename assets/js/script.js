@@ -22,6 +22,7 @@ $(function () {
     let cities = [];
 
     let newCity = '';
+    let stateCode = 'FL';
     let newLat = '';
     let newLon = '';
     // TODO: put in weather codes to add tooltip for images
@@ -69,7 +70,11 @@ $(function () {
                 cities.push(newCity);
                 addNewCity();
             }
+            stateCode = stateSelect.find(":selected").text;
             init();
+        }
+        else if (stateSelect.find(":selected").text == "State") {
+            alert('Please choose a state');
         }
         else {
             alert('Please enter a city');
@@ -79,7 +84,11 @@ $(function () {
 
     // Wrap in an async function with await
     async function getLatLon() {
-        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${newCity}&appid=fac80ac7de064233ac17d030d9e1eb4f`);
+        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${newCity},${stateCode},840&appid=fac80ac7de064233ac17d030d9e1eb4f`);
+        console.log(response);
+        if(response.status == 200) {
+            alert("City not found; please try again!");
+        }
         const data = await response.json();
         newLat = data[0].lat;
         newLon = data[0].lon;
