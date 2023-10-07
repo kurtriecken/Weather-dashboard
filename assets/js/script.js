@@ -10,13 +10,23 @@ $(function () {
     const cityCard = $("#city_card");
     const cityDropdown = $("#city_dropdown");
     const cityInput = $("#city_input");
-
     let searchCard = $('#city_form');
+
+    let cities = [];
 
     let newCity = '';
     let newLat = '';
     let newLon = '';
     // TODO: put in weather codes to add tooltip for images
+
+    // TODO: Creates and adds a new city to the dropdown list
+    function addNewCity() {
+        let liEle = $("<li>");
+        let aTagEle = $("<a class='px-2'>");
+        aTagEle.text(newCity);
+        liEle.append(aTagEle);
+        $("#list_dropdown").prepend(liEle);
+    }
 
     function toggleSearchClass() {
         cityCard.toggleClass("col-md-4");
@@ -37,6 +47,13 @@ $(function () {
         newCity = searchCard.children()[0].value.trim();
         console.log(newCity);
         if (newCity) {
+            if (!cities.includes(newCity)) {
+                if (!$("#dropdown_placeholder").is(":hidden")) {
+                    $("#dropdown_placeholder").toggle();
+                }
+                cities.push(newCity);
+                addNewCity();
+            }
             init();
         }
         else {
@@ -138,6 +155,7 @@ $(function () {
 
     // On page load
     toggleWeather();
+    // toggleSearchClass();
 
     // Event handlers
     $('#city_button').on("click", function (event) {
