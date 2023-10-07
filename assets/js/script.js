@@ -1,6 +1,12 @@
 $(function () {
     // let sunIcon = "&#127774";
 
+    const stateCodes = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 
+    'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 
+    'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 
+    'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 
+    'WI', 'WY' ];
+
     // Global element selectors
     const header = $("#header");
     const todayWeather = $("#today_weather");
@@ -8,6 +14,7 @@ $(function () {
     const buttonSpacer = $("#button_spacer");
 
     const cityCard = $("#city_card");
+    const stateSelect = $("#state_select");
     const cityDropdown = $("#city_dropdown");
     const cityInput = $("#city_input");
     let searchCard = $('#city_form');
@@ -19,7 +26,16 @@ $(function () {
     let newLon = '';
     // TODO: put in weather codes to add tooltip for images
 
-    // TODO: Creates and adds a new city to the dropdown list
+    // Populates the select dropdown with US state codes
+    function populateStateSelect() {
+        for (const n in stateCodes) {
+            let newOpt = $("<option>").text(stateCodes[n]);
+            newOpt.attr("value", stateCodes[n]);
+            stateSelect.append(newOpt);
+        }
+    }
+
+    // Creates and adds a new city to the dropdown list
     function addNewCity() {
         let liEle = $("<li>");
         let aTagEle = $("<a class='px-2'>");
@@ -35,6 +51,8 @@ $(function () {
         cityDropdown.toggleClass("col-md-12");
         cityInput.toggleClass("w-25");
         cityInput.toggleClass("w-75");
+        stateSelect.toggleClass("w-25");
+        stateSelect.toggleClass("w-75");
     }
 
     function toggleWeather() {
@@ -157,7 +175,7 @@ $(function () {
 
     // On page load
     toggleWeather();
-    // toggleSearchClass();
+    populateStateSelect();
 
     // Event handlers
     $('#city_button').on("click", function (event) {

@@ -120,11 +120,13 @@
         <div class="row text-center">
             <div class="col-sm-12 col-md-12 text-center" id="city_card">
                 <div class="card bg-transparent border-0">
-                    <h5 class="card-title">City Search</h5>
                     <form id="city_form">
                         <input type="city" class="form-control w-25" aria-describedby="city_search"
-                        placeholder="Try Orlando!" id="city_input">
-                        <div class="form-text">
+                        placeholder="U.S. cities, only" id="city_input">
+                        <select class="form-select w-25 mx-auto" id="state_select" aria-label="Default select example">
+                            <option selected>State</option>
+                          </select>
+                        <div class="form-text fs-4">
                             Enter the name of a city to see the weather!
                         </div>
                         <button type="submit" class="btn btn-primary btn-large m-3" id="city_button">Submit</button>
