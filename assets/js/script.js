@@ -1,11 +1,11 @@
 $(function () {
     // let sunIcon = "&#127774";
 
-    const stateCodes = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 
-    'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 
-    'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 
-    'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 
-    'WI', 'WY' ];
+    const stateCodes = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL',
+        'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI',
+        'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK',
+        'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV',
+        'WI', 'WY'];
 
     // Global element selectors
     const header = $("#header");
@@ -38,6 +38,8 @@ $(function () {
 
     // Creates and adds a new city to the dropdown list
     function addNewCity() {
+        console.log("adding new city!");
+        console.log(`cities: ${cities}`);
         let liEle = $("<li>");
         let aTagEle = $("<a class='px-2'>");
         aTagEle.text(newCity);
@@ -66,10 +68,6 @@ $(function () {
         newCity = searchCard.children()[0].value.trim();
         console.log(newCity);
         if (newCity) {
-            if (!cities.includes(newCity)) {
-                cities.push(newCity);
-                addNewCity();
-            }
             stateCode = stateSelect.find(":selected").text;
             init();
         }
@@ -86,30 +84,30 @@ $(function () {
     async function getLatLon() {
         const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${newCity},${stateCode},840&appid=fac80ac7de064233ac17d030d9e1eb4f`);
         console.log(response);
-        if(response.status == 200) {
+        if (response.status == 200) {
             alert("City not found; please try again!");
+            // return;
         }
         const data = await response.json();
         newLat = data[0].lat;
         newLon = data[0].lon;
-        // If I get a valid latitude and longitude, add city to dropdown list
-        if (!cities.includes(newCity)) {
-            cities.push(newCity);
-            addNewCity();
-        }
-
     }
 
     function getTodaysWeather() {
-        console.log("in get todays weather function");
-        console.log(newLat);
-        console.log(newLon);
+        // console.log("in get todays weather function");
+        // console.log(newLat);
+        // console.log(newLon);
         // Today's weather
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${newLat}&lon=${newLon}&units=imperial&appid=fac80ac7de064233ac17d030d9e1eb4f`, {})
             .then(function (response) {
                 return response.json();
             })
             .then(function (data) {
+                // If I get a valid latitude and longitude, add city to dropdown list
+                if (!cities.includes(newCity)) {
+                    cities.push(newCity);
+                    addNewCity();
+                }
                 console.log(data);
                 $('#today_temp').html(`Temperature: ${Math.round(data.main.temp)}&deg&nbspF`);
                 $('#today_hum').html(`Humidity: ${data.main.humidity}`);
@@ -185,6 +183,7 @@ $(function () {
     // On page load
     toggleWeather();
     populateStateSelect();
+    console.log(`cities array: ${cities}`);
 
     // Event handlers
     $('#city_button').on("click", function (event) {
