@@ -48,9 +48,6 @@ $(function () {
         console.log(newCity);
         if (newCity) {
             if (!cities.includes(newCity)) {
-                if (!$("#dropdown_placeholder").is(":hidden")) {
-                    $("#dropdown_placeholder").toggle();
-                }
                 cities.push(newCity);
                 addNewCity();
             }
@@ -68,7 +65,11 @@ $(function () {
         const data = await response.json();
         newLat = data[0].lat;
         newLon = data[0].lon;
-        console.log(`lat is ${newLat} and lon is ${newLon}`);
+        // If I get a valid latitude and longitude, add city to dropdown list
+        if (!cities.includes(newCity)) {
+            cities.push(newCity);
+            addNewCity();
+        }
 
     }
 
@@ -82,6 +83,7 @@ $(function () {
                 return response.json();
             })
             .then(function (data) {
+                console.log(data);
                 $('#today_temp').html(`Temperature: ${Math.round(data.main.temp)}&deg&nbspF`);
                 $('#today_hum').html(`Humidity: ${data.main.humidity}`);
                 $('#today_wnd_spd').html(`Wind Speed: ${data.wind.speed}&nbspMPH`);
