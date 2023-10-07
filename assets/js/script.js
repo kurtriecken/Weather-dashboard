@@ -1,5 +1,15 @@
 $(function () {
-    let sunIcon = "&#127774";
+    // let sunIcon = "&#127774";
+
+    // Global element selectors
+    const header = $("#header");
+    const todayWeather = $("#today_weather");
+    const fiveDays = $("#5_day_forecast");
+    const buttonSpacer = $("#button_spacer");
+
+    const cityCard = $("#city_card");
+    const cityDropdown = $("#city_dropdown");
+    const cityInput = $("#city_input");
 
     let searchCard = $('#city_form');
 
@@ -7,6 +17,21 @@ $(function () {
     let newLat = '';
     let newLon = '';
     // TODO: put in weather codes to add tooltip for images
+
+    function toggleSearchClass() {
+        cityCard.toggleClass("col-md-4");
+        cityCard.toggleClass("col-md-12");
+        cityDropdown.toggleClass("col-md-4");
+        cityDropdown.toggleClass("col-md-12");
+        cityInput.toggleClass("w-25");
+        cityInput.toggleClass("w-75");
+    }
+
+    function toggleWeather() {
+        todayWeather.toggle();
+        fiveDays.toggle();
+        buttonSpacer.toggle();
+    }
 
     function readCityInput() {
         newCity = searchCard.children()[0].value.trim();
@@ -22,16 +47,12 @@ $(function () {
 
     // Wrap in an async function with await
     async function getLatLon() {
-        console.log("in getlatlon function");
-        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${newCity}&appid=fac80ac7de064233ac17d030d9e1eb4f`, {})
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                newLat = data[0].lat;
-                newLon = data[0].lon;
-                console.log(`lat is ${newLat} and lon is ${newLon}`);
-            })
+        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${newCity}&appid=fac80ac7de064233ac17d030d9e1eb4f`);
+        const data = await response.json();
+        newLat = data[0].lat;
+        newLon = data[0].lon;
+        console.log(`lat is ${newLat} and lon is ${newLon}`);
+
     }
 
     function getTodaysWeather() {
@@ -56,7 +77,8 @@ $(function () {
                 let iconCode = data.weather[0].icon;
                 $('#today_weather').find('img').attr("src", `http://openweathermap.org/img/w/${iconCode}.png`);
 
-                $('#today_image').html(sunIcon);
+                // $('#today_image').html(sunIcon);
+                console.log(`your city name is: ${data.name}`);
                 $('#city_name').text(data.name);
 
             });
@@ -88,9 +110,12 @@ $(function () {
                     headEle.children('div').children("p.temp").html(`${dayTemp}&deg&nbspF`);
 
                     // Sets humidiity
-
+                    let dayHum = Math.round(data.list[i].main.humidity);
+                    headEle.children('div').children("p.humidity").html(`Humidity: ${dayTemp}\%`);
 
                     // Sets wind speed
+                    let dayWindSpd = Math.round(data.list[i].wind.speed);
+                    headEle.children('div').children("p.wind_speed").html(`Wind Speed: ${dayWindSpd} mph`);
                 }
             })
     }
@@ -98,15 +123,21 @@ $(function () {
     // http://openweathermap.org/img/w/02n.png
 
     // Initialization of page
-    function init() {
-        getLatLon();
+    async function init() {
+        await getLatLon();
         console.log("in init function");
         console.log(newLat);
         console.log(newLon);
         getTodaysWeather();
         get5DayForecast();
+        if (todayWeather.is(":hidden")) {
+            toggleWeather();
+            toggleSearchClass();
+        }
     }
 
+    // On page load
+    toggleWeather();
 
     // Event handlers
     $('#city_button').on("click", function (event) {
