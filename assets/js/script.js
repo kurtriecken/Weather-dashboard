@@ -49,14 +49,14 @@ $(function () {
     }
 
     function toggleSearchClass() {
-        cityCard.toggleClass("col-md-4");
-        cityCard.toggleClass("col-md-12");
-        cityDropdown.toggleClass("col-md-4");
-        cityDropdown.toggleClass("col-md-12");
-        cityInput.toggleClass("w-25");
-        cityInput.toggleClass("w-75");
-        stateSelect.toggleClass("w-25");
-        stateSelect.toggleClass("w-75");
+        // cityCard.toggleClass("col-md-4");
+        // cityCard.toggleClass("col-md-12");
+        // cityDropdown.toggleClass("col-md-4");
+        // cityDropdown.toggleClass("col-md-12");
+        // cityInput.toggleClass("w-25");
+        // cityInput.toggleClass("w-75");
+        // stateSelect.toggleClass("w-25");
+        // stateSelect.toggleClass("w-75");
     }
 
     function toggleWeather() {
@@ -194,6 +194,8 @@ $(function () {
     $('#city_button').on("click", function (event) {
         event.preventDefault();
         readCityInput();
+        // clear form text and set State as :selected
+        $(cityInput).text("");
     });
 
     $("#list_dropdown").on("click", function(event) {
