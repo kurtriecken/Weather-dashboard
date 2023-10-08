@@ -109,6 +109,9 @@ $(function () {
             })
             .then(function (data) {
                 // If I get a valid latitude and longitude, add city to dropdown list
+                console.log(data);
+                newCity = data.name;
+                console.log(newCity);
                 if (!cities.includes(newCity) && data.cod == 200) {
                     cities.push(newCity);
                     addNewCity();
