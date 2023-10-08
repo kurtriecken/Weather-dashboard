@@ -90,7 +90,7 @@ $(function () {
     // Wrap in an async function with await
     async function getLatLon() {
         // console.log(`city: ${newCity}, state: ${stateCode}`);
-        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${newCity},${stateCode},840&appid=fac80ac7de064233ac17d030d9e1eb4f`);
+        const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${newCity},${stateCode},840&appid=fac80ac7de064233ac17d030d9e1eb4f`);
         // console.log(response);
         const data = await response.json();
         if (data.length == 0) {
