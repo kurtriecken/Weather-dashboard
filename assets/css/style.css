@@ -12,10 +12,11 @@ body {
 }
 
 #header {
-    background-image: linear-gradient(to right, #2060C1, #FFDE3B);
+    /* background-image: linear-gradient(to right, #2060C1, #FFDE3B); */
+    /* background-image: url(../pictures/header.jpg); */
 }
 
-#cloud_div {
+/* #cloud_div {
     background-image: url(../pictures/rain_cloud.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -27,7 +28,7 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-}
+} */
 
 input {
     margin: auto;
