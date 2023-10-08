@@ -124,8 +124,8 @@ $(function () {
 
 
                 $('#today_temp').html(`${Math.round(data.main.temp)}&deg&nbspF`);
-                $('#today_hum').html(`Humidity: ${data.main.humidity}`);
-                $('#today_wnd_spd').html(`Wind Speed: ${data.wind.speed}&nbspMPH`);
+                $('#today_hum').html(`Humidity: ${data.main.humidity}%`);
+                $('#today_wnd_spd').html(`Wind Speed: ${Math.round(data.wind.speed)}&nbspmph`);
                 let dateInMS = data.dt * 1000;
                 // console.log(dayjs(dateInMS).format('MMM DD, YYYY @ hh:mma'));
                 // console.log("+__+_+_+_+_+_++_+_++___+_");
