@@ -43,7 +43,8 @@ $(function () {
         let liEle = $("<li>");
         let aTagEle = $("<button class='px-2 btn btn-secondary w-75'>");
         aTagEle.attr("data-state", stateCode);
-        aTagEle.text(newCity);
+        aTagEle.text(newCity + ", " + stateCode);
+        aTagEle.attr("data-city", newCity);
         liEle.append(aTagEle);
         liEle.attr("class", "text-center");
         $("#list_dropdown").prepend(liEle);
@@ -110,14 +111,18 @@ $(function () {
             })
             .then(function (data) {
                 // If I get a valid latitude and longitude, add city to dropdown list
-                console.log(data);
+                // console.log(data);
                 newCity = data.name;
-                console.log(newCity);
-                if (!cities.includes(newCity) && data.cod == 200) {
-                    cities.push(newCity);
+                // console.log(newCity);
+                if (!cities.includes(newCity + ", " + stateCode) && data.cod == 200) {
+                    cities.push(newCity + ", " + stateCode);
                     addNewCity();
                 }
-                console.log(data);
+                // console.log(data);
+
+                // reset form
+
+
                 $('#today_temp').html(`${Math.round(data.main.temp)}&deg&nbspF`);
                 $('#today_hum').html(`Humidity: ${data.main.humidity}`);
                 $('#today_wnd_spd').html(`Wind Speed: ${data.wind.speed}&nbspMPH`);
@@ -199,7 +204,8 @@ $(function () {
         event.preventDefault();
         readCityInput();
         // clear form text and set State as :selected
-        $(cityInput).text("");
+        $("#city_input").val('');
+        $(stateSelect).val('State').change();
     });
 
     $("#list_dropdown").on("click", function(event) {
@@ -210,7 +216,7 @@ $(function () {
             // console.log(button);
             // console.log($(button).text());
             // console.log($(button).data("state"));
-            newCity = $(button).text();
+            newCity = $(button).data("city");
             stateCode = $(button).data("state");
             newLat = '';
             newLon = '';

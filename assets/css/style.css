@@ -17,7 +17,11 @@ html {
     overflow-x: initial;
 }
 
-html, body {
+html {
+    overflow: hidden;
+}
+
+body {
     overflow: auto;
 }
 
