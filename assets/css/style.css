@@ -82,7 +82,7 @@ input {
 }
 
 #footer {
-    margin: 0!important;
+    /* margin: 0!important; */
     max-width: 100%;
     border-top: 2px solid var(--ucf_gold);
     position: absolute;
@@ -99,4 +99,8 @@ a {
 
 #city_card {
     margin: auto;
+}
+
+#city_dropdown {
+    margin-bottom: 20px;
 }
