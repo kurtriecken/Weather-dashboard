@@ -40,10 +40,6 @@ $(function () {
 
     // Creates and adds a new city to the dropdown list
     function addNewCity() {
-        // console.log("adding new city!");
-        // console.log(`cities: ${cities}`);
-        console.log("AEHTIAOETHIOAETH");
-        // console.log(citiesMap.get(newCity));
         let liEle = $("<li>");
         let aTagEle = $("<button class='px-2'>");
         aTagEle.attr("data-state", stateCode);
@@ -71,7 +67,9 @@ $(function () {
 
     function readCityInput() {
         newCity = searchCard.children()[0].value.trim();
-        // console.log(newCity);
+        newLat = '';
+        newlon = '';
+        console.log(newCity);
         // console.log(stateSelect.children(":selected"));
         // console.log($(stateSelect).children(":selected").text());
         if (newCity) {
@@ -89,7 +87,7 @@ $(function () {
 
     // Wrap in an async function with await
     async function getLatLon() {
-        console.log(`city: ${newCity}, state: ${stateCode}`);
+        // console.log(`city: ${newCity}, state: ${stateCode}`);
         const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${newCity},${stateCode},840&appid=fac80ac7de064233ac17d030d9e1eb4f`);
         // console.log(response);
         const data = await response.json();
@@ -97,7 +95,7 @@ $(function () {
             alert("City not found; please try again!");
             return;
         }
-        console.log(data);
+        // console.log(data);
         newLat = data[0].lat;
         newLon = data[0].lon;
     }
@@ -111,7 +109,7 @@ $(function () {
             })
             .then(function (data) {
                 // If I get a valid latitude and longitude, add city to dropdown list
-                if (!cities.includes(newCity)) {
+                if (!cities.includes(newCity) && data.cod == 200) {
                     cities.push(newCity);
                     addNewCity();
                 }
@@ -120,8 +118,8 @@ $(function () {
                 $('#today_hum').html(`Humidity: ${data.main.humidity}`);
                 $('#today_wnd_spd').html(`Wind Speed: ${data.wind.speed}&nbspMPH`);
                 let dateInMS = data.dt * 1000;
-                console.log(dayjs(dateInMS).format('MMM DD, YYYY @ hh:mma'));
-                console.log("+__+_+_+_+_+_++_+_++___+_");
+                // console.log(dayjs(dateInMS).format('MMM DD, YYYY @ hh:mma'));
+                // console.log("+__+_+_+_+_+_++_+_++___+_");
                 let currDay = dayjs(dateInMS).format('MMM DD, YYYY');
                 $('#today_date').text(currDay);
 
@@ -129,7 +127,7 @@ $(function () {
                 $('#today_weather').find('img').attr("src", `http://openweathermap.org/img/w/${iconCode}.png`);
 
                 // $('#today_image').html(sunIcon);
-                console.log(`your city name is: ${data.name}`);
+                // console.log(`your city name is: ${data.name}`);
                 $('#city_name').text(data.name);
 
             });
@@ -153,7 +151,7 @@ $(function () {
 
                     // Sets icon for each day
                     let imgCode = data.list[i].weather[0].icon;
-                    console.log(imgCode);
+                    // console.log(imgCode);
                     headEle.children('div').children("img").attr("src", `http://openweathermap.org/img/w/${imgCode}.png`);
 
                     // Sets temperature for each day
@@ -176,9 +174,9 @@ $(function () {
     // Initialization of page
     async function init() {
         await getLatLon();
-        console.log("in init function");
-        console.log(newLat);
-        console.log(newLon);
+        // console.log("in init function");
+        // console.log(newLat);
+        // console.log(newLon);
         getTodaysWeather();
         get5DayForecast();
         if (todayWeather.is(":hidden")) {
@@ -190,7 +188,7 @@ $(function () {
     // On page load
     toggleWeather();
     populateStateSelect();
-    console.log(`cities array: ${cities}`);
+    // console.log(`cities array: ${cities}`);
 
     // Event handlers
     $('#city_button').on("click", function (event) {
@@ -200,7 +198,7 @@ $(function () {
 
     $("#list_dropdown").on("click", function(event) {
         if (event.target.nodeName == 'BUTTON'){
-            console.log("clickety click click");
+            // console.log("clickety click click");
             let button = event.target;
             // console.log("Heres what the buttons got");
             // console.log(button);
