@@ -25,7 +25,9 @@ $(function () {
     let stateCode = '';
     let newLat = '';
     let newLon = '';
+
     // TODO: put in weather codes to add tooltip for images
+    // TODO: change background images for different weather conditions
 
     // Populates the select dropdown with US state codes
     function populateStateSelect() {
@@ -40,8 +42,11 @@ $(function () {
     function addNewCity() {
         // console.log("adding new city!");
         // console.log(`cities: ${cities}`);
+        console.log("AEHTIAOETHIOAETH");
+        // console.log(citiesMap.get(newCity));
         let liEle = $("<li>");
-        let aTagEle = $("<a class='px-2'>");
+        let aTagEle = $("<button class='px-2'>");
+        aTagEle.attr("data-state", stateCode);
         aTagEle.text(newCity);
         liEle.append(aTagEle);
         $("#list_dropdown").prepend(liEle);
@@ -192,6 +197,25 @@ $(function () {
         event.preventDefault();
         readCityInput();
     });
+
+    $("#list_dropdown").on("click", function(event) {
+        if (event.target.nodeName == 'BUTTON'){
+            console.log("clickety click click");
+            let button = event.target;
+            // console.log("Heres what the buttons got");
+            // console.log(button);
+            // console.log($(button).text());
+            // console.log($(button).data("state"));
+            newCity = $(button).text();
+            stateCode = $(button).data("state");
+            newLat = '';
+            newLon = '';
+            init();
+            // getLatLon();
+            // getTodaysWeather();
+            // get5DayForecast();
+        }
+    })
 
 
 });
