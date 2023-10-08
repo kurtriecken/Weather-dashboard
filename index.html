@@ -20,10 +20,10 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
-<body class="h-100">
+<body class="vh-100">
 
     <!-- Header and welcome message -->
-    <div class="container-fluid border-secondary border-none pt-3" id="header">
+    <div class="container-fluid pt-3" id="header">
         <div class="row flex-nowrap text-center justify-content-evenly">
 
             <div class="col-sm-3 w-100 text-center">
@@ -34,22 +34,22 @@
     </div>
 
     <!-- Main body -->
-    <div class="container">
+    <div class="container vh-100">
 
         <!-- Today's weather -->
-        <div class="row" id="today_weather">
-            <div class="col-sm-12 col-md-4 text-center">
-                <h2 id="city_name"></h2>
-            </div>
-            <div class="col-sm-12 col-md-2">
-                <img data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top" src="#" alt="weather_icon">
+        <div class="row fs-5" id="today_weather">
+            <div class="col-sm-12 col-md-3 text-center">
+                <h2 class="fs-1 fw-bold" id="city_name"></h2>
                 <p id="today_date"></p>
             </div>
-            <div class="col-sm-12 col-md-3">
-                <h2 id="today_temp">
+            <div class="col-sm-12 col-md-2 mt-2">
+                <img data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top" src="#" alt="weather_icon">
+            </div>
+            <div class="col-sm-12 col-md-2 text-center">
+                <h2 class="fs-1" id="today_temp">
                 </h2>
             </div>
-            <div class="col-sm-12 col-md-3">
+            <div class="col-sm-12 col-md-2">
                 <p id="today_hum"></p>
                 <p id="today_wnd_spd"></p>
             </div>
@@ -57,7 +57,8 @@
 
         <!-- Five-day forecast row -->
         <div class="row justify-content-evenly" id="5_day_forecast">
-            <div class="col-sm-12 col-md-2 five-day" id="day_1">
+            <div class="col-sm-12 col-md-2 five-day border border-1 rounded-2
+            shadow p-3 mb-5 bg-body rounded" id="day_1">
                 <h3>Tomorrow</h3>
                 <div class="row">
                     <p class="w-50 temp"></p>
@@ -68,7 +69,8 @@
                     <p class="wind_speed"></p>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-2 five-day" id="day_2">
+            <div class="col-sm-12 col-md-2 five-day border border-1 rounded-2
+            shadow p-3 mb-5 bg-body rounded" id="day_2">
                 <h3></h3>
                 <div class="row">
                     <p class="w-50 temp"></p>
@@ -79,7 +81,8 @@
                     <p class="wind_speed"></p>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-2 five-day" id="day_3">
+            <div class="col-sm-12 col-md-2 five-day border border-1 rounded-2
+            shadow p-3 mb-5 bg-body rounded" id="day_3">
                 <h3></h3>
                 <div class="row">
                     <p class="w-50 temp"></p>
@@ -90,7 +93,8 @@
                     <p class="wind_speed"></p>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-2 five-day" id="day_4">
+            <div class="col-sm-12 col-md-2 five-day border border-1 rounded-2
+            shadow p-3 mb-5 bg-body rounded" id="day_4">
                 <h3></h3>
                 <div class="row">
                     <p class="w-50 temp"></p>
@@ -101,7 +105,8 @@
                     <p class="wind_speed" </p>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-2 five-day" id="day_5">
+            <div class="col-sm-12 col-md-2 five-day border border-1 rounded-2
+            shadow p-3 mb-5 bg-body rounded" id="day_5">
                 <h3></h3>
                 <div class="row">
                     <p class="w-50 temp"></p>
@@ -121,13 +126,13 @@
                     <form id="city_form">
                         <input type="city" class="form-control w-25" aria-describedby="city_search"
                             placeholder="U.S. cities, only" id="city_input">
-                        <select class="form-select-sm w-25 mx-auto" id="state_select" aria-label="State select options">
+                        <select class="form-select-sm w-25 mx-auto mt-2" id="state_select" aria-label="State select options">
                             <option selected>State</option>
                         </select>
                         <div class="form-text fs-4">
                             Enter the name of a city to see the weather!
                         </div>
-                        <button type="submit" class="btn btn-primary btn-large m-3" id="city_button">Submit</button>
+                        <button type="submit" class="btn btn-primary btn-large mx-3" id="city_button">Submit</button>
                     </form>
                 </div>
             </div>

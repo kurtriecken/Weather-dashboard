@@ -116,7 +116,7 @@ $(function () {
                     addNewCity();
                 }
                 console.log(data);
-                $('#today_temp').html(`Temperature: ${Math.round(data.main.temp)}&deg&nbspF`);
+                $('#today_temp').html(`${Math.round(data.main.temp)}&deg&nbspF`);
                 $('#today_hum').html(`Humidity: ${data.main.humidity}`);
                 $('#today_wnd_spd').html(`Wind Speed: ${data.wind.speed}&nbspMPH`);
                 let dateInMS = data.dt * 1000;
