@@ -27,7 +27,7 @@
         <div class="row flex-nowrap text-center justify-content-evenly">
 
             <div class="col-sm-3 w-100 text-center">
-                <h1>Welcome to your local weather!</h1>
+                <h1>Welcome to your weather dashboard!</h1>
             </div>
 
         </div>
@@ -37,19 +37,19 @@
     <div class="container vh-100">
 
         <!-- Today's weather -->
-        <div class="row fs-5" id="today_weather">
-            <div class="col-sm-12 col-md-3 text-center">
+        <div class="row-md-8 w-50 fs-5 border border-1 rounded-2 shadow p-3 mx-auto mb-5 bg-body 
+            rounded" id="today_weather">
+            <div class="col-sm-12 col-md-6 text-center">
                 <h2 class="fs-1 fw-bold" id="city_name"></h2>
                 <p id="today_date"></p>
             </div>
-            <div class="col-sm-12 col-md-2 mt-2">
-                <img data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top" src="#" alt="weather_icon">
-            </div>
-            <div class="col-sm-12 col-md-2 text-center">
+            <div class="col-sm-12 col-md-6 text-center">
+                <img data-bs-toggle="tooltip" data-bs-placement="top" 
+                    title="Tooltip on top" src="#" alt="weather_icon">
                 <h2 class="fs-1" id="today_temp">
                 </h2>
             </div>
-            <div class="col-sm-12 col-md-2">
+            <div class="col-sm-12 col-md-6">
                 <p id="today_hum"></p>
                 <p id="today_wnd_spd"></p>
             </div>
@@ -121,12 +121,12 @@
 
         <!-- City search  -->
         <div class="row text-center">
-            <div class="col-sm-12 col-md-12 text-center" id="city_card">
+            <div class="col-sm-12 col-md-4 text-center" id="city_card">
                 <div class="card bg-transparent border-0">
                     <form id="city_form">
-                        <input type="city" class="form-control w-25" aria-describedby="city_search"
+                        <input type="city" class="form-control w-100" aria-describedby="city_search"
                             placeholder="U.S. cities, only" id="city_input">
-                        <select class="form-select-sm w-25 mx-auto mt-2" id="state_select" aria-label="State select options">
+                        <select class="form-select-sm w-50 mx-auto mt-2" id="state_select" aria-label="State select options">
                             <option selected>State</option>
                         </select>
                         <div class="form-text fs-4">
@@ -137,7 +137,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-8" id="button_spacer"></div>
+            <!-- <div class="col-sm-12 col-md-8" id="button_spacer"></div> -->
 
             <!-- Dropdown of previously seen cities -->
             <div class="col-sm-12 col-md-12" id="city_dropdown">
@@ -153,18 +153,21 @@
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-8"></div>
+            <!-- <div class="col-sm-12 col-md-8"></div> -->
 
         </div>
     </div>
 
     <!-- Footer with social links -->
-    <div class="container" id="Footer">
-        <div class="row text-center">
-            <div class="col-sm-12 col-md-3">KR</div>
-            <div class="col-sm-12 col-md-3">Github</div>
-            <div class="col-sm-12 col-md-3">Phone</div>
-            <div class="col-sm-12 col-md-3">Email</div>
+    <div class="container w-100 text-center" id="footer" style="background-color: black">
+        <div class="row text-center w-100">
+            <div class="col-sm-12 col-md-3" style="color: var(--metallic_gold)">KR</div>
+            <div class="col-sm-12 col-md-3">
+                <a href="https://github.com/kurtriecken">Github</a></div>
+            <div class="col-sm-12 col-md-3">
+                <a href="tel:+5555555555">Phone</a></div>
+            <div class="col-sm-12 col-md-3">
+                <a href="mailto: kurt.riecken@gmail.com">Email</a></div>
         </div>
     </div>
 

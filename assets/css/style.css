@@ -1,13 +1,30 @@
+:root {
+    --ucf_gold: #FFC904;
+    --metallic_gold: #BA9B37;
+}
+
 * {
     margin-bottom: 10px;
-    font-family: 'Gabarito', cursive;
-    font-family: 'PT Sans Narrow', sans-serif;
+    /* font-family: 'Gabarito', cursive;
+    font-family: 'PT Sans Narrow', sans-serif; */
+    font-family: 'Archivo Black';
     font-weight: bold;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+html, body {
+    overflow: auto;
 }
 
 body {
     /* background-color: skyblue; */
     background-image: url(../pictures/clear_sky.jpg);
+    background-repeat: no-repeat;
+    /* background-size: 100vw 100%; */
     background-size: cover;
 }
 
@@ -15,7 +32,7 @@ p {
     margin-bottom: 0;
 }
 
-.five-day {
+.five-day, #today_weather{
     background-color: #69c3ff!important;
 }
 
@@ -28,9 +45,11 @@ input {
     /* border-color: #319bd8; */
 }
 
-#footer {
-    position: absolute;
-    bottom: 0;
+#today_weather {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
 }
 
 #today_weather img {
@@ -47,4 +66,24 @@ input {
 
 #today_temp {
     font-size: x-large;
+}
+
+#footer {
+    margin: 0!important;
+    max-width: 100%;
+    border-top: 2px solid var(--ucf_gold);
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+}
+
+a {
+    font-weight: bold;
+    font-family: 'Archivo Black';
+    color: var(--metallic_gold);
+    text-decoration: none;
+}
+
+#city_card {
+    margin: auto;
 }
