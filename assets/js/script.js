@@ -67,11 +67,13 @@ $(function () {
     function readCityInput() {
         newCity = searchCard.children()[0].value.trim();
         console.log(newCity);
+        console.log(stateSelect.children(":selected"));
+        console.log($(stateSelect).children(":selected").text());
         if (newCity) {
-            stateCode = stateSelect.find(":selected").text;
+            stateCode = $(stateSelect).children(":selected").text();
             init();
         }
-        else if (stateSelect.find(":selected").text == "State") {
+        else if ($("stateSelect").children(":selected").text() == "State") {
             alert('Please choose a state');
         }
         else {
@@ -82,6 +84,7 @@ $(function () {
 
     // Wrap in an async function with await
     async function getLatLon() {
+        console.log(`city: ${newCity}, state: ${stateCode}`);
         const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${newCity},${stateCode},840&appid=fac80ac7de064233ac17d030d9e1eb4f`);
         console.log(response);
         if (response.status == 200) {
@@ -94,10 +97,8 @@ $(function () {
     }
 
     function getTodaysWeather() {
-        // console.log("in get todays weather function");
-        // console.log(newLat);
-        // console.log(newLon);
-        // Today's weather
+        // newLat = 38.9072;
+        // newLon = -77.9369;
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${newLat}&lon=${newLon}&units=imperial&appid=fac80ac7de064233ac17d030d9e1eb4f`, {})
             .then(function (response) {
                 return response.json();
