@@ -41,10 +41,11 @@ $(function () {
     // Creates and adds a new city to the dropdown list
     function addNewCity() {
         let liEle = $("<li>");
-        let aTagEle = $("<button class='px-2'>");
+        let aTagEle = $("<button class='px-2 btn btn-secondary w-75'>");
         aTagEle.attr("data-state", stateCode);
         aTagEle.text(newCity);
         liEle.append(aTagEle);
+        liEle.attr("class", "text-center");
         $("#list_dropdown").prepend(liEle);
     }
 
