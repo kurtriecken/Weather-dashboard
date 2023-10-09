@@ -11,11 +11,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <!-- Google font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gabarito&family=PT+Sans+Narrow&display=swap" rel="stylesheet">
-
     <!-- My style sheet -->
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -44,8 +39,7 @@
                 <p id="today_date"></p>
             </div>
             <div class="col-12 col-md-6 text-center">
-                <img data-bs-toggle="tooltip" data-bs-placement="top" 
-                    title="Tooltip on top" src="#" alt="weather_icon">
+                <img data-bs-placement="top" src="#" alt="weather_icon">
                 <h2 class="fs-1" id="today_temp">
                 </h2>
             </div>
@@ -124,9 +118,6 @@
             <div class="col-sm-12 col-md-4 ext-center" id="city_card">
                 <div class="card bg-transparent border-0">
                     <form id="city_form">
-                        <!-- <div class="form-text fs-4">
-                            Enter the name of a city to see the weather
-                        </div> -->
                         <input type="city" class="form-control w-100" aria-describedby="city_search"
                             placeholder="U.S. city name" id="city_input">
                         <select class="form-select-sm w-50 mx-auto mt-2" id="state_select" aria-label="State select options">
@@ -136,8 +127,6 @@
                     </form>
                 </div>
             </div>
-
-            <!-- <div class="col-sm-12 col-md-8" id="button_spacer"></div> -->
 
             <!-- Dropdown of previously seen cities -->
             <div class="col-sm-12 col-md-12" id="city_dropdown">
@@ -152,7 +141,6 @@
                 </div>
             </div>
 
-            <!-- <div class="col-sm-12 col-md-8"></div> -->
             <div class="empty"></div>
 
         </div>

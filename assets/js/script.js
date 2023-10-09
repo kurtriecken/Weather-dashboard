@@ -1,6 +1,4 @@
 $(function () {
-    // let sunIcon = "&#127774";
-
     const stateCodes = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL',
         'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI',
         'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK',
@@ -8,15 +6,15 @@ $(function () {
         'WI', 'WY'];
 
     // Global element selectors
-    const header = $("#header");
+    // const header = $("#header");
     const todayWeather = $("#today_weather");
     const fiveDays = $("#5_day_forecast");
     const buttonSpacer = $("#button_spacer");
 
-    const cityCard = $("#city_card");
+    // const cityCard = $("#city_card");
     const stateSelect = $("#state_select");
-    const cityDropdown = $("#city_dropdown");
-    const cityInput = $("#city_input");
+    // const cityDropdown = $("#city_dropdown");
+    // const cityInput = $("#city_input");
     let searchCard = $('#city_form');
 
     let cities = [];
@@ -25,9 +23,6 @@ $(function () {
     let stateCode = '';
     let newLat = '';
     let newLon = '';
-
-    // TODO: put in weather codes to add tooltip for images
-    // TODO: change background images for different weather conditions
 
     // Populates the select dropdown with US state codes
     function populateStateSelect() {
@@ -50,17 +45,6 @@ $(function () {
         $("#list_dropdown").prepend(liEle);
     }
 
-    function toggleSearchClass() {
-        // cityCard.toggleClass("col-md-4");
-        // cityCard.toggleClass("col-md-12");
-        // cityDropdown.toggleClass("col-md-4");
-        // cityDropdown.toggleClass("col-md-12");
-        // cityInput.toggleClass("w-25");
-        // cityInput.toggleClass("w-75");
-        // stateSelect.toggleClass("w-25");
-        // stateSelect.toggleClass("w-75");
-    }
-
     function toggleWeather() {
         todayWeather.toggle();
         fiveDays.toggle();
@@ -71,9 +55,6 @@ $(function () {
         newCity = searchCard.children()[0].value.trim();
         newLat = '';
         newlon = '';
-        console.log(newCity);
-        // console.log(stateSelect.children(":selected"));
-        // console.log($(stateSelect).children(":selected").text());
         if (newCity) {
             stateCode = $(stateSelect).children(":selected").text();
             init();
@@ -89,64 +70,47 @@ $(function () {
 
     // Wrap in an async function with await
     async function getLatLon() {
-        // console.log(`city: ${newCity}, state: ${stateCode}`);
         const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${newCity},${stateCode},840&appid=fac80ac7de064233ac17d030d9e1eb4f`);
-        // console.log(response);
         const data = await response.json();
         if (data.length == 0) {
             alert("City not found; please try again!");
             if (!todayWeather.is(":hidden")) {
                 toggleWeather();
-                toggleSearchClass();
             }
             return;
         }
         else {
             if (todayWeather.is(":hidden")) {
                 toggleWeather();
-                toggleSearchClass();
             }
         }
-        // console.log(data);
         newLat = data[0].lat;
         newLon = data[0].lon;
     }
 
     function getTodaysWeather() {
-        // newLat = 38.9072;
-        // newLon = -77.9369;
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${newLat}&lon=${newLon}&units=imperial&appid=fac80ac7de064233ac17d030d9e1eb4f`, {})
             .then(function (response) {
                 return response.json();
             })
             .then(function (data) {
                 // If I get a valid latitude and longitude, add city to dropdown list
-                // console.log(data);
                 newCity = data.name;
-                // console.log(newCity);
                 if (!cities.includes(newCity + ", " + stateCode) && data.cod == 200) {
                     cities.push(newCity + ", " + stateCode);
                     addNewCity();
+                    localStorage.setItem("cities", JSON.stringify(cities));
                 }
-                // console.log(data);
-
-                // reset form
-
-
                 $('#today_temp').html(`${Math.round(data.main.temp)}&deg&nbspF`);
                 $('#today_hum').html(`Humidity: ${data.main.humidity}%`);
                 $('#today_wnd_spd').html(`Wind Speed: ${Math.round(data.wind.speed)}&nbspmph`);
                 let dateInMS = data.dt * 1000;
-                // console.log(dayjs(dateInMS).format('MMM DD, YYYY @ hh:mma'));
-                // console.log("+__+_+_+_+_+_++_+_++___+_");
                 let currDay = dayjs(dateInMS).format('MMM DD, YYYY');
                 $('#today_date').text(currDay);
 
                 let iconCode = data.weather[0].icon;
                 $('#today_weather').find('img').attr("src", `http://openweathermap.org/img/w/${iconCode}.png`);
 
-                // $('#today_image').html(sunIcon);
-                // console.log(`your city name is: ${data.name}`);
                 $('#city_name').text(data.name);
 
             });
@@ -188,19 +152,13 @@ $(function () {
             })
     }
 
-    // http://openweathermap.org/img/w/02n.png
-
     // Initialization of page
     async function init() {
         console.log("INIT function occuring now");
         await getLatLon();
-        // console.log("in init function");
-        // console.log(newLat);
-        // console.log(newLon);
         getTodaysWeather();
         get5DayForecast();
         console.log(cities);
-        localStorage.setItem("cities", JSON.stringify(cities));
     }
 
     // On page load
@@ -213,16 +171,15 @@ $(function () {
         console.log(cities);
     }
     else {
-        for (let i=0; i<cities.length; i++) {
+        for (let i = 0; i < cities.length; i++) {
             let text = cities[i].split(',');
             newCity = text[0];
             stateCode = text[1].trim();
             addNewCity();
         }
-    newCity = '';
-    stateCode = '';
+        newCity = '';
+        stateCode = '';
     }
-    // console.log(`cities array: ${cities}`);
 
     // Event handlers
     $('#city_button').on("click", function (event) {
@@ -233,26 +190,16 @@ $(function () {
         $(stateSelect).val('State').change();
     });
 
-    $("#list_dropdown").on("click", function(event) {
-        if (event.target.nodeName == 'BUTTON'){
-            // console.log("clickety click click");
+    $("#list_dropdown").on("click", function (event) {
+        if (event.target.nodeName == 'BUTTON') {
             let button = event.target;
-            // console.log("Heres what the buttons got");
-            // console.log(button);
-            // console.log($(button).text());
-            // console.log($(button).data("state"));
             newCity = $(button).data("city");
             stateCode = $(button).data("state");
             newLat = '';
             newLon = '';
             init();
-            // getLatLon();
-            // getTodaysWeather();
-            // get5DayForecast();
         }
     })
 
 
 });
-
-// api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}

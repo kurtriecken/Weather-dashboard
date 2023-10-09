@@ -5,9 +5,7 @@
 
 * {
     margin-bottom: 10px;
-    /* font-family: 'Gabarito', cursive;
-    font-family: 'PT Sans Narrow', sans-serif; */
-    font-family: 'Archivo Black';
+    font-family: 'Archivo Black', Helvetica, sans-serif;
     text-decoration: wavy;
 }
 
@@ -26,10 +24,8 @@ body {
 }
 
 body {
-    /* background-color: skyblue; */
     background-image: url(../pictures/clear_sky.jpg);
     background-repeat: no-repeat;
-    /* background-size: 100vw 100%; */
     background-size: cover;
 }
 
@@ -53,8 +49,6 @@ input {
 }
 
 .card {
-    /* background-color: #3C7FCE; */
-    /* border-color: #319bd8; */
     font-weight: bold;
 }
 
@@ -82,7 +76,6 @@ input {
 }
 
 #footer {
-    /* margin: 0!important; */
     max-width: 100%;
     border-top: 2px solid var(--ucf_gold);
     position: absolute;
