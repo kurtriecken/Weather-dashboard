@@ -32,15 +32,18 @@ After using our search function, a successful return will look like this! The la
 
 **City dropdown list**
 
+At any time, you may select from the dropdown list of previously searched cities. Clicking any of these buttons that appear will repopulate the page with current information about that city's weather! City and state are recorded and displayed so you can differentiate between like-named cities in different states (i.e. Bloomington, IN vs. Bloomington, IL). Also, city searches are saved between sessions so there is no need to worry if you accidentally close the browser.
 
+Finally, contact information for myself (Kurt Riecken) is at the bottom of the page. This includes links to my personal GitHub, phone number, and email address.
+
+If the site does not function on your device or if you have any questions, please feel free to contact me here on GitHub.
 
 
 ## Credits
 
-Written by kurtriecken (github.com/kurtriecken)
+Written by [kurtriecken](github.com/kurtriecken)
 
-State abbreviations list from GitHub user bubblerun:
-https://gist.github.com/bubblerun/a624de5b4fa8ff0980010054a7220977
+State abbreviations list from GitHub user [bubblerun](https://gist.github.com/bubblerun/a624de5b4fa8ff0980010054a7220977)
 
 ## License
 
