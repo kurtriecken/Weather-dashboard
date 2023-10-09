@@ -1,55 +1,69 @@
+/* Global color vairables */
 :root {
     --ucf_gold: #FFC904;
     --metallic_gold: #BA9B37;
 }
 
+/* Universal selector */
 * {
     margin-bottom: 10px;
     font-family: 'Archivo Black', Helvetica, sans-serif;
-    text-decoration: wavy;
 }
 
+/* Selectors by element type */
 html {
     position: relative;
     min-height: 100%;
     overflow-x: initial;
-}
-
-html {
     overflow: hidden;
-}
-
-body {
-    overflow: auto;
 }
 
 body {
     background-image: url(../pictures/clear_sky.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-#header {
-    background-color: rgba(0, 0, 0, 0.9);
-    border-bottom: 2px solid var(--ucf_gold);
-    color: var(--metallic_gold);
-    font-weight: normal;
+    overflow: auto;
 }
 
 p {
     margin-bottom: 0;
 }
 
-.five-day, #today_weather{
-    background-color: #69c3ff!important;
+h3 {
+    font-size: medium;
 }
 
 input {
     margin: auto;
 }
 
+a {
+    font-weight: bold;
+    font-family: 'Archivo Black';
+    color: var(--metallic_gold);
+    text-decoration: none;
+}
+
+/* Class selectors */
+.five-day, #today_weather{
+    background-color: #69c3ff!important;
+}
+
 .card {
     font-weight: bold;
+}
+
+.empty {
+    width: 100%;
+    height: 200px;
+}
+
+/* ID selectors */
+#header {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-bottom: 2px solid var(--ucf_gold);
+    color: var(--metallic_gold);
+    font-weight: normal;
 }
 
 #today_weather {
@@ -59,11 +73,6 @@ input {
     align-items: center;
 }
 
-#today_weather img {
-    width: 50%;
-    height: auto;
-}
-
 #today_weather div {
     align-items: center;
     display: flex;
@@ -71,23 +80,13 @@ input {
     justify-content: center;
 }
 
+#today_weather img {
+    width: 50%;
+    height: auto;
+}
+
 #today_temp {
     font-size: x-large;
-}
-
-#footer {
-    max-width: 100%;
-    border-top: 2px solid var(--ucf_gold);
-    position: absolute;
-    left: 0;
-    bottom: -20px;
-}
-
-a {
-    font-weight: bold;
-    font-family: 'Archivo Black';
-    color: var(--metallic_gold);
-    text-decoration: none;
 }
 
 #city_card {
@@ -98,11 +97,10 @@ a {
     margin-bottom: 20px;
 }
 
-.empty {
-    width: 100%;
-    height: 200px;
-}
-
-h3 {
-    font-size: medium;
+#footer {
+    max-width: 100%;
+    border-top: 2px solid var(--ucf_gold);
+    position: absolute;
+    left: 0;
+    bottom: -20px;
 }
