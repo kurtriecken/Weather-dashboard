@@ -192,18 +192,36 @@ $(function () {
 
     // Initialization of page
     async function init() {
+        console.log("INIT function occuring now");
         await getLatLon();
         // console.log("in init function");
         // console.log(newLat);
         // console.log(newLon);
         getTodaysWeather();
         get5DayForecast();
-
+        console.log(cities);
+        localStorage.setItem("cities", JSON.stringify(cities));
     }
 
     // On page load
     toggleWeather();
     populateStateSelect();
+    cities = JSON.parse(localStorage.getItem("cities"));
+    console.log(cities);
+    if (cities == null) {
+        cities = [];
+        console.log(cities);
+    }
+    else {
+        for (let i=0; i<cities.length; i++) {
+            let text = cities[i].split(',');
+            newCity = text[0];
+            stateCode = text[1].trim();
+            addNewCity();
+        }
+    newCity = '';
+    stateCode = '';
+    }
     // console.log(`cities array: ${cities}`);
 
     // Event handlers
