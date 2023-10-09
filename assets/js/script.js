@@ -1,23 +1,25 @@
 $(function () {
-    const stateCodes = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL',
-        'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI',
-        'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK',
-        'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV',
-        'WI', 'WY'];
+    const stateCodes = ["AK", "AL", "AR", "AS", "AZ", "CA", "CO", "CT", "DE", "DC", "FM", "FL",
+        "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI",
+        "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK",
+        "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV",
+        "WI", "WY"];
 
     // Global element selectors
     const todayWeather = $("#today_weather");
     const fiveDays = $("#5_day_forecast");
-    let searchCard = $('#city_form');
+    let searchCard = $("#city_form");
+    const cityInput = $("city_input");
     const stateSelect = $("#state_select");
+    const cityButton = $("#city_button");
     const listDropdown = $("#list_dropdown");
 
     // Instance variables
     let cities = [];
-    let newCity = '';
-    let stateCode = '';
-    let newLat = '';
-    let newLon = '';
+    let newCity = "";
+    let stateCode = "";
+    let newLat = "";
+    let newLon = "";
 
     // Populates the select dropdown with US state codes
     function populateStateSelect() {
@@ -47,17 +49,19 @@ $(function () {
 
     function readCityInput() {
         newCity = searchCard.children()[0].value.trim();
-        newLat = '';
-        newlon = '';
-        if (newCity) {
+        newLat = "";
+        newlon = "";
+        let currState = $(stateSelect).children(":selected").text();
+        console.log(currState);
+        if (newCity && currState != "State") {
             stateCode = $(stateSelect).children(":selected").text();
             init();
         }
-        else if ($("stateSelect").children(":selected").text() == "State") {
-            alert('Please choose a state');
+        else if ($(stateSelect).children(":selected").text() == "State") {
+            alert("Please choose a state");
         }
         else {
-            alert('Please enter a city');
+            alert("Please enter a city");
             return;
         }
     }
@@ -95,17 +99,17 @@ $(function () {
                     addNewCity();
                     localStorage.setItem("cities", JSON.stringify(cities));
                 }
-                $('#today_temp').html(`${Math.round(data.main.temp)}&deg&nbspF`);
-                $('#today_hum').html(`Humidity: ${data.main.humidity}%`);
-                $('#today_wnd_spd').html(`Wind Speed: ${Math.round(data.wind.speed)}&nbspmph`);
+                $("#today_temp").html(`${Math.round(data.main.temp)}&deg&nbspF`);
+                $("#today_hum").html(`Humidity: ${data.main.humidity}%`);
+                $("#today_wnd_spd").html(`Wind Speed: ${Math.round(data.wind.speed)}&nbspmph`);
                 let dateInMS = data.dt * 1000;
-                let currDay = dayjs(dateInMS).format('MMM DD, YYYY');
-                $('#today_date').text(currDay);
+                let currDay = dayjs(dateInMS).format("MMM DD, YYYY");
+                $("#today_date").text(currDay);
 
                 let iconCode = data.weather[0].icon;
-                $('#today_weather').find('img').attr("src", `http://openweathermap.org/img/w/${iconCode}.png`);
+                $("#today_weather").find("img").attr("src", `http://openweathermap.org/img/w/${iconCode}.png`);
 
-                $('#city_name').text(data.name);
+                $("#city_name").text(data.name);
 
             });
     }
@@ -120,28 +124,33 @@ $(function () {
                 for (let i = 7, j = 1; i < data.list.length; i += 8, j++) {
                     let headEle = $(`#day_${j}`);
 
+                    if (j == 1) {
+                        let tomorrow = data.list[i].dt * 1000;
+                        headEle.find("h3").html(dayjs(tomorrow).format("[Tomorrow], MMM D"));
+                    }
+
                     // Sets day of the week (excepting the first one, which will always display "Tomorrow")
                     if (j != 1) {
                         let newDateInMS = data.list[i].dt * 1000;
-                        headEle.find("h3").html(dayjs(newDateInMS).format('dddd, MMM D'));
+                        headEle.find("h3").html(dayjs(newDateInMS).format("dddd, MMM D"));
                     }
 
                     // Sets icon for each day
                     let imgCode = data.list[i].weather[0].icon;
                     // console.log(imgCode);
-                    headEle.children('div').children("img").attr("src", `http://openweathermap.org/img/w/${imgCode}.png`);
+                    headEle.children("div").children("img").attr("src", `http://openweathermap.org/img/w/${imgCode}.png`);
 
                     // Sets temperature for each day
                     let dayTemp = Math.round(data.list[i].main.temp);
-                    headEle.children('div').children("p.temp").html(`${dayTemp}&deg&nbspF`);
+                    headEle.children("div").children("p.temp").html(`${dayTemp}&deg&nbspF`);
 
                     // Sets humidiity
                     let dayHum = Math.round(data.list[i].main.humidity);
-                    headEle.children('div').children("p.humidity").html(`Humidity: ${dayTemp}\%`);
+                    headEle.children("div").children("p.humidity").html(`Humidity: ${dayTemp}\%`);
 
                     // Sets wind speed
                     let dayWindSpd = Math.round(data.list[i].wind.speed);
-                    headEle.children('div').children("p.wind_speed").html(`Wind Speed: ${dayWindSpd} mph`);
+                    headEle.children("div").children("p.wind_speed").html(`Wind Speed: ${dayWindSpd} mph`);
                 }
             })
     }
@@ -166,31 +175,31 @@ $(function () {
     }
     else {
         for (let i = 0; i < cities.length; i++) {
-            let text = cities[i].split(',');
+            let text = cities[i].split(",");
             newCity = text[0];
             stateCode = text[1].trim();
             addNewCity();
         }
-        newCity = '';
-        stateCode = '';
+        newCity = "";
+        stateCode = "";
     }
 
     // Event handlers
-    $('#city_button').on("click", function (event) {
+    $(cityButton).on("click", function (event) {
         event.preventDefault();
         readCityInput();
         // clear form text and set State as :selected
-        $("#city_input").val('');
-        $(stateSelect).val('State').change();
+        $(cityInput).val("");
+        $(stateSelect).val("State").change();
     });
 
     $(listDropdown).on("click", function (event) {
-        if (event.target.nodeName == 'BUTTON') {
+        if (event.target.nodeName == "BUTTON") {
             let button = event.target;
             newCity = $(button).data("city");
             stateCode = $(button).data("state");
-            newLat = '';
-            newLon = '';
+            newLat = "";
+            newLon = "";
             init();
         }
     })
