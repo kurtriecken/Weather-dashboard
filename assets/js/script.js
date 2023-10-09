@@ -165,7 +165,7 @@ $(function () {
                     // Sets day of the week (excepting the first one, which will always display "Tomorrow")
                     if (j != 1) {
                         let newDateInMS = data.list[i].dt * 1000;
-                        headEle.find("h3").html(dayjs(newDateInMS).format('dddd'));
+                        headEle.find("h3").html(dayjs(newDateInMS).format('dddd, MMM D'));
                     }
 
                     // Sets icon for each day
