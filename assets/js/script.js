@@ -95,7 +95,17 @@ $(function () {
         const data = await response.json();
         if (data.length == 0) {
             alert("City not found; please try again!");
+            if (!todayWeather.is(":hidden")) {
+                toggleWeather();
+                toggleSearchClass();
+            }
             return;
+        }
+        else {
+            if (todayWeather.is(":hidden")) {
+                toggleWeather();
+                toggleSearchClass();
+            }
         }
         // console.log(data);
         newLat = data[0].lat;
@@ -188,10 +198,7 @@ $(function () {
         // console.log(newLon);
         getTodaysWeather();
         get5DayForecast();
-        if (todayWeather.is(":hidden")) {
-            toggleWeather();
-            toggleSearchClass();
-        }
+
     }
 
     // On page load
