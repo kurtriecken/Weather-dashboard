@@ -6,19 +6,14 @@ $(function () {
         'WI', 'WY'];
 
     // Global element selectors
-    // const header = $("#header");
     const todayWeather = $("#today_weather");
     const fiveDays = $("#5_day_forecast");
-    const buttonSpacer = $("#button_spacer");
-
-    // const cityCard = $("#city_card");
-    const stateSelect = $("#state_select");
-    // const cityDropdown = $("#city_dropdown");
-    // const cityInput = $("#city_input");
     let searchCard = $('#city_form');
+    const stateSelect = $("#state_select");
+    const listDropdown = $("#list_dropdown");
 
+    // Instance variables
     let cities = [];
-
     let newCity = '';
     let stateCode = '';
     let newLat = '';
@@ -42,13 +37,12 @@ $(function () {
         aTagEle.attr("data-city", newCity);
         liEle.append(aTagEle);
         liEle.attr("class", "text-center");
-        $("#list_dropdown").prepend(liEle);
+        $(listDropdown).prepend(liEle);
     }
 
     function toggleWeather() {
         todayWeather.toggle();
         fiveDays.toggle();
-        buttonSpacer.toggle();
     }
 
     function readCityInput() {
@@ -190,7 +184,7 @@ $(function () {
         $(stateSelect).val('State').change();
     });
 
-    $("#list_dropdown").on("click", function (event) {
+    $(listDropdown).on("click", function (event) {
         if (event.target.nodeName == 'BUTTON') {
             let button = event.target;
             newCity = $(button).data("city");
