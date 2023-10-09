@@ -1,3 +1,7 @@
+/*/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
+//------------------------------------------Variables-----------------------------------------//
+/*\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
+
 $(function () {
     const stateCodes = ["AK", "AL", "AR", "AS", "AZ", "CA", "CO", "CT", "DE", "DC", "FM", "FL",
         "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI",
@@ -9,7 +13,7 @@ $(function () {
     const todayWeather = $("#today_weather");
     const fiveDays = $("#5_day_forecast");
     let searchCard = $("#city_form");
-    const cityInput = $("city_input");
+    const cityInput = $("#city_input");
     const stateSelect = $("#state_select");
     const cityButton = $("#city_button");
     const listDropdown = $("#list_dropdown");

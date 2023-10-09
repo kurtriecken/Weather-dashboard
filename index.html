@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Meta data and style sheets -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
 
+    <!-- Reset -->
     <link rel="stylesheet" href="./assets/css/reset.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -15,6 +17,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
+<!-- Page body -->
 <body class="vh-100">
 
     <!-- Header and welcome message -->
@@ -34,26 +37,32 @@
         <!-- Today's weather -->
         <div class="row-9 row-md-8 w-50 fs-5 border border-1 rounded-2 shadow p-3 mx-auto mb-5 bg-body 
             rounded" id="today_weather">
+
+            <!-- City name + Date -->
             <div class="col-sm-12 col-md-6 text-center">
                 <h2 class="fs-1 fw-bold" id="city_name"></h2>
                 <p id="today_date"></p>
             </div>
+            <!-- Weather icon + Temperature -->
             <div class="col-12 col-md-6 text-center">
                 <img data-bs-placement="top" src="#" alt="weather_icon">
                 <h2 class="fs-1" id="today_temp">
                 </h2>
             </div>
+            <!-- Humidity and Wind Speed -->
             <div class="col-sm-12 col-md-6">
                 <p id="today_hum"></p>
                 <p id="today_wnd_spd"></p>
             </div>
         </div>
 
-        <!-- Five-day forecast row -->
+        <!-- Five-day forecast -->
         <div class="row justify-content-evenly" id="5_day_forecast">
+
+            <!-- Day 1 -->
             <div class="col-9 col-md-3 col-xl-2 five-day border border-1 rounded-2
             shadow p-3 mx-2 mb-5 bg-body rounded" id="day_1">
-                <h3>Tomorrow</h3>
+                <h3></h3>
                 <div class="row">
                     <p class="w-50 temp"></p>
                     <img class="w-50" src="#" alt="weather_icon">
@@ -63,6 +72,8 @@
                     <p class="wind_speed"></p>
                 </div>
             </div>
+
+            <!-- Day 2 -->
             <div class="col-9 col-md-3 col-xl-2 five-day border border-1 rounded-2
             shadow p-3 mx-2 mb-5 bg-body rounded" id="day_2">
                 <h3></h3>
@@ -75,6 +86,8 @@
                     <p class="wind_speed"></p>
                 </div>
             </div>
+
+            <!-- Day 3 -->
             <div class="col-9 col-md-3 col-xl-2 five-day border border-1 rounded-2
             shadow p-3 mx-2 mb-5 bg-body rounded" id="day_3">
                 <h3></h3>
@@ -87,6 +100,8 @@
                     <p class="wind_speed"></p>
                 </div>
             </div>
+
+            <!-- Day 4 -->
             <div class="col-9 col-md-3 col-xl-2 five-day border border-1 rounded-2
             shadow p-3 mx-2 mb-5 bg-body rounded" id="day_4">
                 <h3></h3>
@@ -99,6 +114,8 @@
                     <p class="wind_speed" </p>
                 </div>
             </div>
+
+            <!-- Day 5 -->
             <div class="col-9 col-md-3 col-xl-2 five-day border border-1 rounded-2
             shadow p-3 mx-2 mb-5 bg-body rounded" id="day_5">
                 <h3></h3>
@@ -117,6 +134,8 @@
         <div class="row text-center">
             <div class="col-sm-12 col-md-4 ext-center" id="city_card">
                 <div class="card bg-transparent border-0">
+
+                    <!-- City input form -->
                     <form id="city_form">
                         <input type="city" class="form-control w-100" aria-describedby="city_search"
                             placeholder="U.S. city name" id="city_input">
@@ -147,7 +166,7 @@
     </div>
 
 
-    <!-- Footer with social links -->
+    <!-- Footer with social and contact links -->
     <div class="container w-100 text-center" id="footer" style="background-color: black">
         <div class="row text-center w-100">
             <div class="col-3" style="color: var(--metallic_gold)">KR</div>
@@ -164,7 +183,7 @@
 
     <!-- Day.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <!-- Bootstrap javaScript -->
+    <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
