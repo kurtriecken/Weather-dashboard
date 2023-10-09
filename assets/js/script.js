@@ -67,7 +67,7 @@ $(function () {
 
         // Creates an li to append to city dropdown list
         let liEle = $("<li>");
-        let aTagEle = $("<button class='px-2 btn btn-secondary w-75'>");
+        let aTagEle = $("<button class='px-2 btn btn-primary w-75'>");
 
         // Adds city and state information to li
         aTagEle.attr("data-state", stateCode);
