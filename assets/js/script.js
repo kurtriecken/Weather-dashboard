@@ -179,7 +179,7 @@ $(function () {
                     }
 
                     // Sets day of the week (excepting the first one, which will always display "Tomorrow")
-                    if (j != 1) {
+                    else {
                         let newDateInMS = data.list[i].dt * 1000;
                         headEle.find("h3").html(dayjs(newDateInMS).format("dddd, MMM D"));
                     }
@@ -194,7 +194,7 @@ $(function () {
 
                     // Humidity
                     let dayHum = Math.round(data.list[i].main.humidity);
-                    headEle.children("div").children("p.humidity").html(`Humidity: ${dayTemp}\%`);
+                    headEle.children("div").children("p.humidity").html(`Humidity: ${dayHum}\%`);
 
                     // Wind speed
                     let dayWindSpd = Math.round(data.list[i].wind.speed);
